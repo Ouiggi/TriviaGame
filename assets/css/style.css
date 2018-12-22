@@ -1,0 +1,49 @@
+.jumbotron {
+    margin: 25px 15%;
+    opacity: 0.9;
+    padding: 15px 10px;
+}
+
+h1 {
+    text-align: center;
+    color: blueviolet;
+    background-color: #03df45;
+    border-radius: 7px;
+    border: #8e03df 4px solid;
+    font-size: 40px;
+    padding: 5px;
+    font-weight: bold;
+    margin: 15px auto;
+    width: 75%;
+}
+
+#quiz {
+    color: black;
+    text-align: center;
+    margin-top: 30px;
+}
+#submit {
+    text-align: center
+}
+
+.background {
+    background: url(../images/Rick-and-morty-wallpaper.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#timer {
+    text-align: center;
+    font-size: 50px;
+}
+
+#startButton {
+    font-size: 100px;
+    text-align: center;
+    background-color: aqua;
+    color: #1387ca;
+    border: solid #1387ca 6px;
+    width: 65%
+}
