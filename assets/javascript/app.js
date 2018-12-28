@@ -1,4 +1,7 @@
 // -----------VARIABLES-------------
+var questionRight = 0;
+var questionWrong = 0;
+
 $ (function () {
     $("#startGame").show();
     $(".jumbotron").hide();
@@ -9,19 +12,20 @@ $ (function () {
 var timer;
 var time = 60;
 
-timer = setInterval(function () {
-    time--;
-    $("#timer").html("<h2>" + time + "</h2>")
-    if (time === 0) {
-        clearInterval(timer);
-        alert("Game Over");
-    }
-    
-}, 1000);
-
 $("#startButton").click(function (){
     $("#startButton").hide();
     $(".jumbotron").show();
+    timer = setInterval(function ()  {
+        time--;
+        $("#timer").html("<h2>" + time + "</h2>") 
+        
+        if (time === 0) {
+            clearInterval(timer);
+            timesUp();
+            
+        }   
+    }, 1000);
+    
 })
 
 var myQuestions = [
@@ -119,11 +123,32 @@ var myQuestions = [
 
 // -----------FUNCTIONS-------------
 
-$("#submit").click(function() {
-  console.log("submit button")
-});
+$("#submit").click(timesUp);
 
-function startGame() {
+function timesUp() {
+  console.log("submit button");
+  for (var i = 0; i < myQuestions.length; i++) {
+      console.log($("input[value='" + myQuestions[i].correctAnswer + "'][name='" + i + "']").checked)
+      if ($("input[name=" + i + "]:checked").val()=== myQuestions[i].correctAnswer) {
+          questionRight++;
+          console.log("please for the love of god...")
+      }
+  }
+  questionWrong = myQuestions.length - questionRight;
+
+  $("#correct").html(questionRight);
+  $("#incorrect").html(questionWrong);
+
+  questionRight = 0
+  questionWrong = 0
+
+  $("#results").removeClass ("hide");
+  $("#quiz").addClass ("hide");
+  $("#timer").addClass ("hide");
+  $("#submit").addClass ("hide")
+};
+  
+     function startGame() {
   for (var i = 0; i < myQuestions.length; i++) {
       $("#quiz").append(myQuestions[i].question + "<br>");
       $("#quiz").append("<input type='radio' name='" + i +  "' value='a'> " + myQuestions[i].answers.a + "<br>");
@@ -132,5 +157,18 @@ function startGame() {
       $("#quiz").append("<input type='radio' name='" + i +  "' value='d'> " + myQuestions[i].answers.d + "<br><br>");
   }
 };
+// reset game
+$("#retry").click(function (){
+    for (var i = 0; i < myQuestions.length; i++) {
+        var checked = $("input[name=" + i + "]:checked");
 
-startGame();
+    checked.prop("checked", false);
+    $("#quiz").removeClass ("hide");
+    $("#results").addClass ("hide");
+    $("#timer").removeClass ("hide");
+    $("#submit").removeClass ("hide");
+    time = 60
+    };
+
+
+})

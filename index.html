@@ -16,13 +16,19 @@
 <body class="background">
     <!-- Hopefully this is where the game will go -->
 <div class="jumbotron ">
-    <div id="timer"></div>
+    <div id="timer">60</div>
     <h1>Show Us What You Got!!!</h1>
     
     <div class="col-md-12" id="quiz"></div>
         
         <button button type="button" class="btn btn-success" id="submit">Submit Quiz</button>
             <div id="score"></div>
+    <div id="results" class="hide">
+           <div>Correct Answers: <span id="correct"></span></div>
+           <div>Incorrect Answers: <span id="incorrect"></span></div>
+           <button id="retry">reSquanch Game</button>
+           </div>
+
 </div>
     
     <!-- linking jQuery -->

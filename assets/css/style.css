@@ -45,5 +45,11 @@ h1 {
     background-color: aqua;
     color: #1387ca;
     border: solid #1387ca 6px;
-    width: 65%
+    width: 65%;
+    margin-top: 230px;
+    margin-left: 20%;
+}
+
+.hide {
+    display: none;
 }
